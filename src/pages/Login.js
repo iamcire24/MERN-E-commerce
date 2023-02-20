@@ -1,6 +1,6 @@
 import { Form, Button, Container, Nav } from 'react-bootstrap';
 import {useState, useEffect, useContext} from 'react';
-import {Navigate} from 'react-router-dom';
+import {Navigate, useNavigate} from 'react-router-dom';
 import UserContext from '../UserContext';
 import Swal from 'sweetalert2';
 
@@ -9,6 +9,7 @@ export default function Login() {
     const {user, setUser} = useContext(UserContext)
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
     
     
     const [isActive, setIsActive] = useState(false);
@@ -38,6 +39,7 @@ export default function Login() {
                         icon: "success",
                         text: "Welcome to AniManga!"
                     })
+                    
                 } else {
                     Swal.fire({
                         title: "Authentication Failed",
@@ -64,18 +66,33 @@ export default function Login() {
 				id: data._id,
 				isAdmin: data.isAdmin
 			})
+            if (data.isAdmin === true){
+                navigate("/admin");
+            } else {
+                navigate("/");
+            }
 		})
 	}
+  
+    
     
     useEffect(() => {
         if(email !== '' && password !== ''){
             setIsActive(true);
         }
     }, [email, password])
+
+ 
+
+    
+
     return (
-        (user.id !== null) ?
-        <Navigate to ="/register"/>
-        :
+        (user.id !== null)?
+			<Navigate to="/"/>
+		:
+		<>
+
+        
         <Container fluid className='w-50 pt-5 me-auto bg-primary mt-5'>
         <Form onSubmit={(e) => loginUser(e)}>
         <Form.Group controlId="userEmail">
@@ -120,6 +137,7 @@ export default function Login() {
         
         </Form>
         </Container>
+        </>
     
         )
         

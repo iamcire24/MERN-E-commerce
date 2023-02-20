@@ -6,7 +6,13 @@ import {UserProvider} from './UserContext'
 import { Container } from 'react-bootstrap';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Register from './pages/Register';
-
+import Footer from './components/Footer';
+import Home from './pages/Home';
+import Logout from './pages/Logout';
+import NotFound from './components/NotFound';
+import Admin from './pages/Admin';
+import ManageProduct from './admin/ManageProduct';
+import AddProduct from './admin/AddProduct';
 function App() {
   const [user, setUser] = useState({
     id: null,
@@ -45,10 +51,27 @@ function App() {
       <AppNavBarSearch/>
         <Container>
           <Routes>
+          {
+            (user.isAdmin) ?
+            <>
+            <Route path='/admin' element = {<Admin/>}/>
+            <Route path='/admin/manageProduct' element = {<ManageProduct/>}/>
+            <Route path='/admin/addProduct' element = {<AddProduct/>}/>
+            </>
+            :
+            <></>
+          }
+
+            
+            <Route path='/' element = {<Home/>}/>
+                
             <Route path="/login" element={<Login/>}/>
             <Route path="/signup" element={<Register/>}/>
+            <Route path="/logout" element={<Logout/>}/>
+            <Route path="*" element={<NotFound/>}/>
           </Routes>
         </Container>
+        <Footer/>
     </Router>
     
     

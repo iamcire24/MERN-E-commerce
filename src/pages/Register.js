@@ -21,7 +21,7 @@ export default function Register() {
 
     function registerUser() {
 		
-		fetch(`${process.env.REACT_APP_API_URL}/users/register`, {
+		fetch(`${process.env.REACT_APP_API_URL}/users/signUp`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -30,6 +30,7 @@ export default function Register() {
 				firstName: firstName,
 				lastName: lastName,
 				email: email,
+				username: username,
 				mobileNo: mobileNo,
 				password: password1,
                 address: address
@@ -42,7 +43,7 @@ export default function Register() {
 				Swal.fire({
 					title: "Registration successful",
 					icon: "success",
-					text: "Welcome to Zuitt"              
+					text: "Welcome to AniManga"              
 				})
 				setFirstName('');
 				setLastName('');
@@ -74,9 +75,9 @@ export default function Register() {
 		.then(data => {
 			if (data === true){
 				Swal.fire({
-				title: "Duplicate email found",
+				title: "Email and/or Username exist!",
 				icon: "error",
-				text: "Please provide a different email!"
+				text: "Please provide a different email/username!"
 			})
 
 			} else {
