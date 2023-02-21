@@ -13,6 +13,9 @@ import NotFound from './components/NotFound';
 import ManageProduct from './admin/ManageProduct';
 import AddProduct from './admin/AddProduct';
 import UpdateProductCard from './components/UpdateProductCard';
+import ProductList from './components/ProductList';
+import ViewSingleProduct from './components/ViewSingleProduct';
+
 function App() {
   const [user, setUser] = useState({
     id: null,
@@ -65,7 +68,8 @@ function App() {
 
             
             <Route path='/' element = {<Home/>}/>
-                
+            <Route path='/products' element= {<ProductList/>}/>
+            <Route path='/products/:productId' element = {<ViewSingleProduct/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/signup" element={<Register/>}/>
             <Route path="/logout" element={<Logout/>}/>

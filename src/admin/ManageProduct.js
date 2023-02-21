@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import {Button, Container, Table} from 'react-bootstrap';
+import {Button, Container, Table, Pagination} from 'react-bootstrap';
 
 import Swal from 'sweetalert2'
 
@@ -101,7 +101,7 @@ export default function ManageProduct(){
         <div>
         
         
-        
+        <Pagination>
         <Table striped bordered hover size="sm">
         <tbody id ="table-product">
         
@@ -138,6 +138,7 @@ export default function ManageProduct(){
             ))}
             </tbody>
             </Table>
+            </Pagination>
             </div>
             
             

@@ -60,7 +60,7 @@ export default function UpdateProductCard() {
   
   
   return (
-    <Container fluid className='w-50 pt-5 me-auto bg-primary mt-1'>
+    <Container fluid className='w-50 pt-5 me-auto bg-info mt-1'>
     <Form onSubmit={e => updateProduct(e)} className="vh-100">
     {<center><h1>Update Product </h1></center> }
     {<center><h5>Please fill in the information below </h5></center> }
@@ -85,6 +85,8 @@ export default function UpdateProductCard() {
     <Form.Group controlId="description">
     <Form.Label>Description</Form.Label>
     <Form.Control 
+    as="textarea"
+    rows={5}
     type="text" 
     placeholder="New description"
     value = {description}

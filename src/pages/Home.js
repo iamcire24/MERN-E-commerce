@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import Carousel from 'react-bootstrap/Carousel';
-import CarouselTitle from '../components/CarouselTitle';
+import NewProduct from '../components/NewProduct';
+import Welcome from '../components/Welcome';
+import AllProducts from '../components/AllProducts';
 
 export default function Home() {
   
 
   return (
     <>
-    <CarouselTitle/>
-    <div>
-        <h1>HOME</h1>
+    <Welcome/>
+   <NewProduct/>
+   <AllProducts/>
 
-    </div>
     </>
   );
 }

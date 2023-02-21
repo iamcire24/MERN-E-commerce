@@ -100,7 +100,7 @@ export default function Register() {
         <Navigate to ="/login"/>
         :
 
-        <Container fluid className='w-50 pt-5 me-auto bg-primary mt-1'>
+        <Container fluid className='w-50 pt-5 me-auto reg-form mt-1'>
         <Form onSubmit={emailExist}>
         {<center><h1>Create Account for AniManga </h1></center> }
         {<center><h5>Please fill in the information below </h5></center> }

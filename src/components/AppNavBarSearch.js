@@ -3,11 +3,12 @@ import { Cart4 } from 'react-bootstrap-icons';
 import UserContext from '../UserContext';
 import {useState, useContext} from 'react';
 import {Link, NavLink} from 'react-router-dom';
+import '../App.css'
 
 export default function AppNavBarSearch() {
   const {user} = useContext(UserContext);
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar id="nav-bar" expand="lg">
     <Container fluid>
     <Navbar.Brand as={NavLink} to="/">AniManga</Navbar.Brand>
     <Navbar.Toggle aria-controls="navbarScroll" />
@@ -27,7 +28,7 @@ export default function AppNavBarSearch() {
     className="me-2 w-100"
     aria-label="Search"
     />
-    <Button variant="outline-success">Search</Button>
+    <Button variant="outline-light">Search</Button>
     </Form>
     <Nav className='ml-auto p-2'>
     

@@ -91,9 +91,9 @@ export default function Login() {
 			<Navigate to="/"/>
 		:
 		<>
-
-        
-        <Container fluid className='w-50 pt-5 me-auto bg-primary mt-5'>
+    <div class='login'>
+        <Container className='vh-100'>
+        <Container fluid className='w-50 pt-5 me-auto  mt-5 h-50 login-form'>
         <Form onSubmit={(e) => loginUser(e)}>
         <Form.Group controlId="userEmail">
         {<center><h1>Login to AniManga </h1></center> }
@@ -132,13 +132,15 @@ export default function Login() {
             
         }
         <Form.Group>
-        <Form.Label id= "newCustomer">New customer?<Nav.Link id="registerHere" href="#home">Register here</Nav.Link></Form.Label>  
+        <Form.Label id= "newCustomer">New customer?<Nav.Link id="registerHere" href="/signup">Register here</Nav.Link></Form.Label>  
         </Form.Group>
         
         </Form>
         </Container>
+        </Container>
+        </div>
         </>
-    
+        
         )
         
     }

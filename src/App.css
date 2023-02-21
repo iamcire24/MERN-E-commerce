@@ -3,9 +3,21 @@
   padding: 0;
   box-sizing: border-box;
 }
+#welcome {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+}
+#nav-bar {
+  background-color: #6096B4;
+}
 #loginBtn {
-  background-color: aliceblue;
+  background-color: #93BFCF;
   color: black;
+}
+#loginBtn::hover{
+  background-color: #6096B4;
+}
+.reg-form{
+  background-color: #BDCDD6;
 }
 #newCustomer {
   color: black;
@@ -17,4 +29,29 @@
 #submitBtn {
   background-color: aliceblue;
   color: black;
+}
+
+#card-title {
+  font-weight: 900;
+  flex-grow: 1;
+}
+#card-new {
+  background-color: blanchedalmond;
+  margin-bottom: 4rem;
+  
+}
+#subtitle {
+  font-weight: 900;
+}
+.login-form {
+  background-color: #BDCDD6;
+}
+.footer {
+  background-color: #EEE9DA;
+}
+span {
+
+display: inline-block;
+width: 5vw;
+
 }
