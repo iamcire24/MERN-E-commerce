@@ -1,6 +1,6 @@
-import { Form, Button, Container, Nav } from 'react-bootstrap';
+import { Form, Button, Container } from 'react-bootstrap';
 import {useState, useEffect, useContext} from 'react';
-import {Navigate, useNavigate} from 'react-router-dom';
+
 import UserContext from '../UserContext';
 import Swal from 'sweetalert2';
 
@@ -12,7 +12,7 @@ export default function AddProduct() {
     const [description, setDescription] = useState('')
     const [quantity, setQuantity] = useState('')
     const [price, setPrice] = useState('')
-    const navigate = useNavigate()
+    
     
     const [isActive, setIsActive] = useState(false);
     

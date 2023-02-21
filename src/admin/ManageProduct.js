@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
-import {Button, Card, Container, Modal, Row, Table, Form} from 'react-bootstrap';
-import {useNavigate} from 'react-router-dom'
+import {Button, Container, Table} from 'react-bootstrap';
+
 import Swal from 'sweetalert2'
 
 
@@ -12,6 +12,8 @@ export default function ManageProduct(){
     function refreshPage() {
         window.location.reload(false);
       }
+    
+
     
     const archiveProduct = (e) => {
         const archiveItem  = e.target.value;
@@ -73,9 +75,7 @@ export default function ManageProduct(){
         refreshPage();
         
     }
-    // const addProduct = () => {
-    //     navigate('/admin/addProduct')
-    // }
+    
     const fetchData = () => {
         fetch(`${process.env.REACT_APP_API_URL}/products/all`)
         .then(res => res.json())
@@ -90,7 +90,7 @@ export default function ManageProduct(){
     }
     useEffect(() => {
         fetchData();
-    }, []);
+    });
     
     
     return (
@@ -131,7 +131,7 @@ export default function ManageProduct(){
                 <Button value={item._id} onClick={unarchiveProduct} variant="primary"  style={{ fontSize:'12px', paddingY:'0',paddingX:'auto', textAlign:'center', display:'flex',justifyContent:'center'}} >Enable</Button>
             }
             </td>
-            <td style={{width:'10%'}}><Button className="admin-product-operation" onClick="" value={item._id} variant="secondary" style={{width:'70%', fontSize:'12px', paddingY:'0',paddingX:'auto', textAlign:'center', display:'flex',justifyContent:'center'}}>Update</Button>  
+            <td style={{width:'10%'}}><Button value={item._id} onClick={() => window.open(`/admin/updateProduct/${item._id}`, '_blank')} variant="secondary" style={{width:'70%', fontSize:'12px', paddingY:'0',paddingX:'auto', textAlign:'center', display:'flex',justifyContent:'center'}}>Update</Button>  
             
             </td>
             </tr>
@@ -141,8 +141,10 @@ export default function ManageProduct(){
             </div>
             
             
+
             
             
             </Container>
             )
         }
+    

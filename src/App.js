@@ -10,9 +10,9 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Logout from './pages/Logout';
 import NotFound from './components/NotFound';
-import Admin from './pages/Admin';
 import ManageProduct from './admin/ManageProduct';
 import AddProduct from './admin/AddProduct';
+import UpdateProductCard from './components/UpdateProductCard';
 function App() {
   const [user, setUser] = useState({
     id: null,
@@ -54,9 +54,10 @@ function App() {
           {
             (user.isAdmin) ?
             <>
-            <Route path='/admin' element = {<Admin/>}/>
-            <Route path='/admin/manageProduct' element = {<ManageProduct/>}/>
+            
+            <Route path='/admin' element = {<ManageProduct/>}/>
             <Route path='/admin/addProduct' element = {<AddProduct/>}/>
+            <Route path='/admin/updateProduct/:productId' element = {<UpdateProductCard/>}/>
             </>
             :
             <></>
