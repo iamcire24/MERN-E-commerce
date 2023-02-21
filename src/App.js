@@ -15,11 +15,14 @@ import AddProduct from './admin/AddProduct';
 import UpdateProductCard from './components/UpdateProductCard';
 import ProductList from './components/ProductList';
 import ViewSingleProduct from './components/ViewSingleProduct';
+import Profile from './pages/Profile';
 
 function App() {
   const [user, setUser] = useState({
     id: null,
-    isAdmin: null
+    isAdmin: null,
+    email: null,
+    username: null
   });
   const unsetUser = () => {
     localStorage.clear();
@@ -37,7 +40,9 @@ function App() {
       if (typeof data._id !== "undefined"){
         setUser({
           id: data._id,
-          isAdmin: data.isAdmin
+          isAdmin: data.isAdmin,
+          email: data.email,
+          username: data.username
         })
       } else {
         setUser({
@@ -63,13 +68,16 @@ function App() {
             <Route path='/admin/updateProduct/:productId' element = {<UpdateProductCard/>}/>
             </>
             :
-            <></>
+            <>
+             <Route path='/' element = {<Home/>}/>
+            <Route path='/products' element= {<ProductList/>}/>
+            <Route path='/products/:productId' element = {<ViewSingleProduct/>}/>
+            </>
           }
 
             
-            <Route path='/' element = {<Home/>}/>
-            <Route path='/products' element= {<ProductList/>}/>
-            <Route path='/products/:productId' element = {<ViewSingleProduct/>}/>
+           
+            <Route path='/profile' element = {<Profile/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/signup" element={<Register/>}/>
             <Route path="/logout" element={<Logout/>}/>

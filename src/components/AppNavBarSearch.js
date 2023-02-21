@@ -10,7 +10,13 @@ export default function AppNavBarSearch() {
   return (
     <Navbar id="nav-bar" expand="lg">
     <Container fluid>
+      {
+      (user.isAdmin) ? 
+      <Navbar.Brand as={NavLink} to="/admin">AniManga</Navbar.Brand>
+      :
+
     <Navbar.Brand as={NavLink} to="/">AniManga</Navbar.Brand>
+  }
     <Navbar.Toggle aria-controls="navbarScroll" />
     
     <Navbar.Collapse id="navbarScroll">
@@ -34,7 +40,10 @@ export default function AppNavBarSearch() {
     
     {
       (user.id) ? 
+      <>
+      <Nav.Link as={NavLink} to="/profile">{user.username}</Nav.Link>
       <Nav.Link as={NavLink} to="/logout">Logout</Nav.Link>
+      </>
       :
       <>
       <Nav.Link as={NavLink} to="/login">Login</Nav.Link>

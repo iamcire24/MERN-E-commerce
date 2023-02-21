@@ -1,6 +1,6 @@
 import {useState, useEffect } from "react";
-import { Button, Container, Card, Row, Col, Form} from "react-bootstrap";
-import {useParams} from 'react-router-dom'
+import { Button, Container, Card, Row, Col, Stack} from "react-bootstrap";
+import {useParams,useNavigate} from 'react-router-dom'
 import Swal from'sweetalert2';
 import '../App.css'
 
@@ -9,11 +9,12 @@ export default function ViewSingleProduct() {
 const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
   let php = "\u20B1"
+  const navigate = useNavigate()
   const getProduct = async () => {
     await fetch(`${process.env.REACT_APP_API_URL}/products/${productId}`)
     .then(res => res.json())
     .then(data => {
-      console.log(data)
+      
       setProduct(data)
     }) 
   }
@@ -34,12 +35,11 @@ const [product, setProduct] = useState({});
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 },
                 body: JSON.stringify({
-                    products: [
-                        {
+                    
                             productId: productId,
                             quantity: quantity
-                        }
-                    ]
+                        
+                    
                 })
                     })
                     if(response.status === 200) {
@@ -48,6 +48,7 @@ const [product, setProduct] = useState({});
                         icon: "success",
                         text: "Thank You and have a nice day!"
                     })
+                    navigate("/products")
                     }
               } else if (result.isDenied) {
                 Swal.fire('Order Cancelled')
@@ -78,13 +79,13 @@ const [product, setProduct] = useState({});
         document.querySelector('.btn-reduce-quantity').removeAttribute('disabled');
     }
 
-}, [quantity])
+})
 
   
   
   
   return (
-    <Container fluid className='w-100 vh-100 pt-5 me-auto  mt-1'>
+    <Container fluid className='vw-50 vh-100 pt-5 mt-1'>
     <Row>
 		<Col >
 		<Card className='flex-fill' id="card-new" >
@@ -93,23 +94,25 @@ const [product, setProduct] = useState({});
             </Card.Body>
             {/* <Card.Img className='h-20' variant="top" src="" /> */}
             <Card.Body className="text-center h-70">
-            <Card.Subtitle id="subtitle">Description:</Card.Subtitle>
+            <Card.Subtitle id="subtitle" className="text-center">Description:</Card.Subtitle>
             <Card.Text >{product.description}</Card.Text>
             </Card.Body>
-            <Card.Subtitle id="subtitle" >Code: </Card.Subtitle>
-            <Card.Text>{product.code}</Card.Text>
-            <Card.Subtitle id="subtitle" >Price: </Card.Subtitle>
-            <Card.Text>{php} {product.price}</Card.Text>
-            <Card.Subtitle id="subtitle" >Stocks: </Card.Subtitle>
-            <Card.Text>{product.quantity}</Card.Text>
+            <Card.Subtitle id="subtitle" className="text-center">Code: </Card.Subtitle>
+            <Card.Text className="text-center">{product.code}</Card.Text>
+            <Card.Subtitle id="subtitle" className="text-center">Price: </Card.Subtitle>
+            <Card.Text className="text-center">{php} {product.price}</Card.Text>
+            <Card.Subtitle id="subtitle" className="text-center" >Available stocks: </Card.Subtitle>
+            <Card.Text className="text-center">{product.quantity}</Card.Text>
             <div>
 							<center> <h4>Number of Order</h4> </center>
 						</div>
 						<div>
                             <center>
+                              
 							<Button className="btn btn-reduce-quantity" variant="danger" onClick={() => setQuantity(quantity - 1)}>-</Button>
-							<span value= {quantity}>{quantity}</span>
+							<span id="prodQuantity">{quantity}</span>
 							<Button className="btn btn-add-quantity" variant="success" onClick={() => setQuantity(quantity + 1)}>+</Button>
+        
                             </center>
 						</div>
             

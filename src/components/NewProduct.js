@@ -49,7 +49,7 @@ return (
 <Carousel responsive={responsive}
 autoPlay
 autoPlaySpeed={2000}
-infinite>
+>
 {data.map((item, index) => (
             <Card key={index} id="card-new" className="h-100 ">
             <Card.Body className="text-center ">
