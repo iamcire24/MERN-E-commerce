@@ -74,7 +74,7 @@ autoPlaySpeed={2000}
                                 
     
             
-            <Button variant="info" onClick={() => window.open(`/products/${item._id}`, '_blank')}>View</Button>
+            <Button variant="info" onClick={() => window.open(`/products/${item._id}`, '_self')}>View</Button>
             </Card>
             ))}
 

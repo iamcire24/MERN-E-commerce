@@ -26,7 +26,7 @@ export default function AllProducts() {
         <Container >
         <h1>All Products</h1> 
         <div>
-        <Button size='lg' className='float-end' onClick={() => window.open(`/products`)}>View All</Button>
+        <Button size='lg' className='float-end' onClick={() => window.open(`/products`, '_self')}>View All</Button>
         </div>
         <Row lg={3}>
         {data.map((item, index) => (
@@ -54,7 +54,7 @@ export default function AllProducts() {
                                 
     
             
-            <Button variant="info" value={item._id} onClick={() => window.open(`/products/${item._id}`, '_blank')}>View</Button>
+            <Button variant="info" value={item._id} onClick={() => window.open(`/products/${item._id}`, '_self')}>View</Button>
                 </Card>
             </Col>
 

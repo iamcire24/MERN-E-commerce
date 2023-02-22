@@ -44,7 +44,7 @@ export default function ProductList() {
                                 
     
             
-            <Button variant="info" value={item._id} onClick={() => window.open(`/products/${item._id}`, '_blank')}>View</Button>
+            <Button variant="info" value={item._id} onClick={() => window.open(`/products/${item._id}`, '_self')}>View</Button>
                 </Card>
             </Col>
 

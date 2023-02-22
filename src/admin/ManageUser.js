@@ -97,8 +97,8 @@ export default function ManageUser(){
     return (
         <Container>
         <center><h2>Admin Dashboard</h2></center>
-        <Button className="btn btn-success mx-2 my-3" onClick={() => window.open('/admin/addProduct', '_blank')}>Add Product</Button>
-        <Button className="btn btn-success mx-2 my-3" onClick={() => window.open('/admin', '_blank')}>Manage Product</Button>
+        <Button className="btn btn-success mx-2 my-3" onClick={() => window.open('/admin/addProduct', '_self')}>Add Product</Button>
+        <Button className="btn btn-success mx-2 my-3" onClick={() => window.open('/admin', '_self')}>Manage Product</Button>
         <div>
         <Pagination>
         <Table striped bordered hover size="sm">

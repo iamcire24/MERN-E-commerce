@@ -96,8 +96,8 @@ export default function ManageProduct(){
     return (
         <Container>
         <center><h2>Admin Dashboard</h2></center>
-        <Button className="btn btn-success mx-2 my-3" onClick={() => window.open('/admin/addProduct', '_blank')}>Add Product</Button>
-        <Button className="btn btn-success mx-2 my-3" onClick={() => window.open('/admin/user', '_blank')}>Manage User</Button>
+        <Button className="btn btn-success mx-2 my-3" onClick={() => window.open('/admin/addProduct', '_self')}>Add Product</Button>
+        <Button className="btn btn-success mx-2 my-3" onClick={() => window.open('/admin/user', '_self')}>Manage User</Button>
         <div>
         
         
@@ -131,7 +131,7 @@ export default function ManageProduct(){
                 <Button value={item._id} onClick={unarchiveProduct} variant="primary"  style={{ fontSize:'12px', paddingY:'0',paddingX:'auto', textAlign:'center', display:'flex',justifyContent:'center'}} >Enable</Button>
             }
             </td>
-            <td style={{width:'10%'}}><Button value={item._id} onClick={() => window.open(`/admin/updateProduct/${item._id}`, '_blank')} variant="secondary" style={{width:'70%', fontSize:'12px', paddingY:'0',paddingX:'auto', textAlign:'center', display:'flex',justifyContent:'center'}}>Update</Button>  
+            <td style={{width:'10%'}}><Button value={item._id} onClick={() => window.open(`/admin/updateProduct/${item._id}`, '_self')} variant="secondary" style={{width:'70%', fontSize:'12px', paddingY:'0',paddingX:'auto', textAlign:'center', display:'flex',justifyContent:'center'}}>Update</Button>  
             
             </td>
             </tr>
