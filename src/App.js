@@ -16,6 +16,7 @@ import UpdateProductCard from './components/UpdateProductCard';
 import ProductList from './components/ProductList';
 import ViewSingleProduct from './components/ViewSingleProduct';
 import Profile from './pages/Profile';
+import ManageUser from './admin/ManageUser';
 
 function App() {
   const [user, setUser] = useState({
@@ -64,6 +65,7 @@ function App() {
             <>
             
             <Route path='/admin' element = {<ManageProduct/>}/>
+            <Route path='/admin/user' element = {<ManageUser/>}/>
             <Route path='/admin/addProduct' element = {<AddProduct/>}/>
             <Route path='/admin/updateProduct/:productId' element = {<UpdateProductCard/>}/>
             </>

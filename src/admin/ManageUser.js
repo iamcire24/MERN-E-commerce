@@ -5,7 +5,7 @@ import Swal from 'sweetalert2'
 
 
 
-export default function ManageProduct(){
+export default function ManageUser(){
     
     //const navigate = useNavigate()
     const [data, setData] = useState([]);
@@ -15,9 +15,9 @@ export default function ManageProduct(){
     
 
     
-    const archiveProduct = (e) => {
-        const archiveItem  = e.target.value;
-        fetch(`${process.env.REACT_APP_API_URL}/products/${archiveItem}/archive`, {
+    const toAdmin = (e) => {
+        const adminUser  = e.target.value;
+        fetch(`${process.env.REACT_APP_API_URL}/users/${adminUser}/admin`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -42,12 +42,13 @@ export default function ManageProduct(){
                 })
             }
         })
-        refreshPage();
+        refreshPage() 
+       
         
     }
-    const unarchiveProduct = (e) => {
-        const unarchiveItem  = e.target.value;
-        fetch(`${process.env.REACT_APP_API_URL}/products/${unarchiveItem}/unarchive`, {
+    const toUser = (e) => {
+        const userAdmin  = e.target.value;
+        fetch(`${process.env.REACT_APP_API_URL}/users/${userAdmin}/user`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -72,12 +73,12 @@ export default function ManageProduct(){
                 })
             }
         })
-        refreshPage();
-        
+       
+        refreshPage() 
     }
     
     const fetchData = () => {
-        fetch(`${process.env.REACT_APP_API_URL}/products/all`)
+        fetch(`${process.env.REACT_APP_API_URL}/users/allUsers`)
         .then(res => res.json())
         .then((actualData) => {
             console.log(actualData);
@@ -97,43 +98,40 @@ export default function ManageProduct(){
         <Container>
         <center><h2>Admin Dashboard</h2></center>
         <Button className="btn btn-success mx-2 my-3" onClick={() => window.open('/admin/addProduct', '_blank')}>Add Product</Button>
-        <Button className="btn btn-success mx-2 my-3" onClick={() => window.open('/admin/user', '_blank')}>Manage User</Button>
+        <Button className="btn btn-success mx-2 my-3" onClick={() => window.open('/admin', '_blank')}>Manage Product</Button>
         <div>
-        
-        
         <Pagination>
         <Table striped bordered hover size="sm">
         <tbody id ="table-product">
-        
         <tr>
-        <th>Name</th>
-        <th>Code</th>
-        <th>Description</th>
-        <th>Stocks</th>
-        <th>Price</th>
-        <th>Active</th>
-        <th>Action</th>
-        
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Mobile Number</th>
+        <th>Address</th>
+        <th>Date Registered</th>
+        <th>Role</th>
         </tr>
-        
-        {data.map((item, index) => (
+        {data.map((user, index) => (
             <tr key={index}>
-            <td>{item.name}</td>
-            <td>{item.code}</td>
-            <td>{item.description}</td>
-            <td>{item.quantity}</td>
-            <td>{item.price}</td>
+            <td>{user.firstName}</td>
+            <td>{user.lastName}</td>
+            <td>{user.username}</td>
+            <td>{user.email}</td>
+            <td>{user.mobileNo}</td>
+            <td>{user.address}</td>
+            <td>{user.dateRegistered}</td>
             <td>
             {
-                (item.isActive === true) ?
-                <Button value={item._id}  onClick={archiveProduct} variant="danger"  style={{ fontSize:'12px', paddingY:'0',paddingX:'auto', textAlign:'center', display:'flex',justifyContent:'center'}}>Disable</Button>
+                (user.isAdmin === true) ?
+                <Button value={user._id}  onClick={toUser} variant="danger"  style={{ fontSize:'12px', paddingY:'0',paddingX:'auto', textAlign:'center', display:'flex',justifyContent:'center'}}>Admin</Button>
                 :
-                <Button value={item._id} onClick={unarchiveProduct} variant="primary"  style={{ fontSize:'12px', paddingY:'0',paddingX:'auto', textAlign:'center', display:'flex',justifyContent:'center'}} >Enable</Button>
+                <Button value={user._id} onClick={toAdmin} variant="primary"  style={{ fontSize:'12px', paddingY:'0',paddingX:'auto', textAlign:'center', display:'flex',justifyContent:'center'}} >User</Button>
             }
             </td>
-            <td style={{width:'10%'}}><Button value={item._id} onClick={() => window.open(`/admin/updateProduct/${item._id}`, '_blank')} variant="secondary" style={{width:'70%', fontSize:'12px', paddingY:'0',paddingX:'auto', textAlign:'center', display:'flex',justifyContent:'center'}}>Update</Button>  
-            
-            </td>
+
+        
             </tr>
             ))}
             </tbody>

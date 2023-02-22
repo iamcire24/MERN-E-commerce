@@ -41,13 +41,6 @@ export default function ProductList() {
             <Card.Subtitle id="subtitle" >Price: </Card.Subtitle>
             <Card.Text>{php} {item.price}</Card.Text>
             
-    
-                                {/* {
-                                    (user.id !== null) ?
-                                        <Button variant="primary" onClick={() => enroll(courseId)} >Enroll</Button>
-                                        :
-                                        <Button className="btn btn-danger" as={Link} to="/login"  >Log in to Enroll</Button>
-                                } */}
                                 
     
             
